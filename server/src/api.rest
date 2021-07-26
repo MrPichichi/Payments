@@ -1,0 +1,45 @@
+###
+
+GET http://localhost:3000/api/payments HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/payments HTTP/1.1
+Content-Type: application/json
+
+{
+    name: "Pedro",
+    lastName: "Riquelme",
+    description: "pago servicios",
+    serviceHour: "5",
+    amountOfService: "3112.26",
+    date: "13-10-2000",
+    dayAmountUf: "15561.28",
+    
+}
+
+### 
+
+GET http://localhost:3000/api/payments/{id} HTTP/1.1
+
+###
+
+PUT http://localhost:3100/api/payments/{id}
+Content-Type: application/json
+
+{
+    name: "Manuel",
+    lastName: "Fuenzalida",
+    description: "pago servicios",
+    serviceHour: "7",
+    amountOfService: "3049.23",
+    date: "13-10-2010",
+    dayAmountUf: "21344.58",
+}
+
+###
+DELETE http://localhost:3100/api/payments/{id}
+
+###
+DELETE http://localhost:3100/api/payments
+
