@@ -44,6 +44,9 @@ export class PaymentComponent implements OnInit {
         return valorUF;
       });
     }
+    else{
+      window.alert("ERROR- Verifica la fecha ingresada");
+    }
   }
   // Calcula el total del servicio y setea las horas de este al payment actual
   calcular(form?: NgForm){
@@ -59,6 +62,10 @@ export class PaymentComponent implements OnInit {
       }
       //console.log("Horas: "+hrs);
     }
+    else{
+      window.alert("ERROR- Verifica los datos ingresados");
+    }
+    
 
   }
   // añade un nuevo payment en base a un Formulario o guarda los cambios relizados en un payment
