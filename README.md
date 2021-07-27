@@ -1,9 +1,11 @@
 # payments
+Tecnologias utilizadas mongodb, morgan, express, nodejs, angular 
 Para ejecutar correctamente CRUD  en este proyecto
 se debe:
-- Tecnologias utilizadas mongodb, morgan, express, nodejs, angular 
+
 - iniciar el servidor mongo en su ruta \payment\server con el comando "npm run dev" 
 - iniciar angular en su ruta \payment\frontend con el comando ng serve
+
 
 ## Como CREAR un payment ##
  1.- ingresar los campos: 

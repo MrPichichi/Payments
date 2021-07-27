@@ -23,6 +23,7 @@ export class PaymentService {selectedPayment: Payment;
     payment.serviceHour=hrs;
     payment.dayAmountUf=valorUF;
     payment.amountOfService=total;
+    this.selectedPayment = new Payment();
     return this.http.post(this.URL_API, payment);
   }
   //para facilitar el conteo de los servicios, verificar consola
@@ -51,7 +52,10 @@ export class PaymentService {selectedPayment: Payment;
     this.contador();
     payment.dayAmountUf=valorUF;
     payment.amountOfService=total;
+    //this.selectedPayment = new Payment();
+    console.log("selcted payment: "+this.selectedPayment.amountOfService);
     return this.http.put(this.URL_API + `/${payment._id}`, payment);
+    
   }
   //enlaza servico con servidor para eliminar un payment en base a su ID
   deletePayment(_id: string) {

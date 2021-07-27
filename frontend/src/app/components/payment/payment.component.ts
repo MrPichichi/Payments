@@ -4,6 +4,7 @@ import { NgForm } from "@angular/forms";
 import { Payment } from "../../models/payment";
 
 var editando=false;
+var creando=false;
 var valorUF=0;
 var hrs=0;
 var uf=[];
@@ -21,6 +22,7 @@ export class PaymentComponent implements OnInit {
  
   ngOnInit() {
     this.getPayments();
+    this.resetForm();
     this.paymentService.servicesRequest=0;
     //seteamos null para desplegar bien el formulario
     this.paymentService.selectedPayment.serviceHour=null;
@@ -52,6 +54,9 @@ export class PaymentComponent implements OnInit {
       this.paymentService.selectedPayment.amountOfService = total;
       hrs=Number.parseFloat(form.value.serviceHour);
       this.paymentService.selectedPayment.serviceHour = hrs;
+      if(creando==false && editando==false){
+        creando=true;
+      }
       //console.log("Horas: "+hrs);
     }
 
@@ -59,22 +64,36 @@ export class PaymentComponent implements OnInit {
   // añade un nuevo payment en base a un Formulario o guarda los cambios relizados en un payment
   // ya existente
   addPayment(form?: NgForm) {
-    if(this.validarForm(form)==true){
-          if (form.value._id && editando==true) {
-              editando=false;
-              this.paymentService.putPayment(form.value,valorUF,total).subscribe((res) => {
-              this.getPayments();
-              this.resetForm(form);
-            });
-            window.alert("Payment editado con exito");
-          } else {      
-              this.paymentService.postPayment(form.value,valorUF,total,hrs).subscribe((res) => {
+    console.log("editando: "+editando+"  creando: "+creando+" total: "+total+" UF: "+valorUF+" "+form.value._id);
+    if(total!=0 && valorUF!=0){
+      if(this.validarForm(form)==true){
+            if (form.value._id && editando==true) {
+                console.log("EDIT");
+                editando=false;
+                this.paymentService.putPayment(form.value,valorUF,total).subscribe((res) => {
+                
                 this.getPayments();
                 this.resetForm(form);
               });
-              window.alert("Payment creado con exito");
-            
-          }
+              valorUF=0;
+              total=0;
+              window.alert("Payment editado con exito");
+            } 
+            if(creando==true){      
+                
+                this.paymentService.postPayment(form.value,valorUF,total,hrs).subscribe((res) => {
+                 
+                  this.getPayments();
+                  this.resetForm(form);
+                });
+                valorUF=0;
+                total=0;
+                creando=false;
+                window.alert("Payment creado con exito");
+               
+              
+            }
+      }
     }
     else{
       window.alert("ERROR- Verifica los datos del formulario");
@@ -90,8 +109,10 @@ export class PaymentComponent implements OnInit {
   }
   //establece el payment selecccionado para editarlo 
   editPayment(payment: Payment) {
-    editando=true;
     this.paymentService.selectedPayment = payment;
+    this.paymentService.selectedPayment.dayAmountUf=0;
+    this.paymentService.selectedPayment.amountOfService=0;
+    editando=true;
   }
   //elimina un payment en base a su ID 
   deletePayment(_id: string, form: NgForm) {
@@ -109,14 +130,27 @@ export class PaymentComponent implements OnInit {
     }
   }
   //validacion de la estructura de un formulario
-  validarForm(form: NgForm) {
-    if(form.value.name.length == 0 || form.value.lastName.length == 0 || form.value.description.length == 0 ||
-      form.value.serviceHour <=0 || form.value.date.length<10){
-        return false;
-      }
-      else{
-        //console.log("FORMULARIO correcto");
-        return true;
-      }
+  validarForm(form?: NgForm) {
+      if(form.value.name.length == 0 || form.value.lastName.length == 0 || form.value.description.length == 0 ||
+        form.value.serviceHour <=0 || form.value.date.length<10){
+          return false;
+        }
+        else{
+          //console.log("FORMULARIO correcto");
+          return true;
+        }
+  }
+  validarEjecucion(){
+    console.log(editando+" valor uf: "+valorUF+" total: "+total)
+    if(editando==true){
+      return false;
+    }
+    else{
+      return true;
+    }
+     
+
+
+
   }
 }
