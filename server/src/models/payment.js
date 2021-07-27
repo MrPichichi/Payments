@@ -10,7 +10,6 @@ const paymentSchema = new Schema(
     amountOfService: { type: Number, required: false },
     date: { type: String, required: true},
     dayAmountUf: { type: Number, required: true },
-    
   }
 );
 

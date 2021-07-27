@@ -1,21 +1,17 @@
 <div class="row">
-
   <!-- FORM -->
   <div class="col-md-4">
     <div class="card">
       <div class="card-body p-4">
-
         <!-- FORM -->
         <form #paymentForm="ngForm" (ngSubmit)="addPayment(paymentForm)">
           <!-- THE Id's Payment -->
           <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="paymentService.selectedPayment._id">
-
           <div class="form-group">
             <label>Name</label>
             <input type="text" name="name" #name="ngModel" [(ngModel)]="paymentService.selectedPayment.name"
               placeholder="Enter Name" class="form-control">
           </div>
-
           <div class="form-group">
             <label>Last Name</label>
             <div class="input-field col-s12">
@@ -23,13 +19,11 @@
                 placeholder="Enter Last Name" class="form-control">
             </div>
           </div>
-
           <div class="form-group">
             <label>Description</label>
             <input type="text" name="description" #name="ngModel" [(ngModel)]="paymentService.selectedPayment.description"
               placeholder="Enter a Description" class="form-control">
           </div>
-
           <div class="form-group">
             <label>Service Hour</label>
             <div class="input-field col-s12">
@@ -37,7 +31,6 @@
                 value="" placeholder="Enter Service Hour" class="form-control">
             </div>
           </div>
-          
           <div class="form-group">
             <label>Date</label>
             <div class="input-field col-s12">
@@ -45,10 +38,8 @@
                 value="" placeholder="Enter Date dd-mm-yyyy" class="form-control">
             </div>
           </div>
-
           <div class="form-group">
             <label>Day Amount Uf</label>
-            
             <div class="input-field col-s12">
               <input type="text" name="dayAmountUf" #name="ngModel" [(ngModel)]="paymentService.selectedPayment.dayAmountUf"
                 class="form-control" readonly>
@@ -59,10 +50,8 @@
                 </a>
             </div>
           </div>
-          
           <div class="form-group">
             <label>Amount Of Service</label>
-            
             <div class="input-field col-s12">
               <input type="text" name="amountOfService" #name="ngModel" [(ngModel)]="paymentService.selectedPayment.amountOfService"
                  class="form-control" readonly>
@@ -71,7 +60,6 @@
                     calcular
                     </span>
                 </a>
-                <!-- <a class="btn btn-info btn-sm" href="#" role="button" (click)="calcular(paymentForm)">Calcular Total</a>-->
             </div>
           </div>
           <a (click)="resetForm(paymentForm)" class="btn btn-primary col-xs-2 margin-right">
@@ -80,9 +68,6 @@
           <a (click)="addPayment(paymentForm)" class="btn btn-success col-xs-2 margin-left" style="float: right;" >
             <i class="material-icons">save</i>
           </a>
-          
-          
-          
       </form>
     </div>
   </div>
@@ -100,7 +85,6 @@
       <th>Date</th>
       <th>UF Amount</th>
       <th>Edit - Delete</th>
-    
     </thead>
     <tbody>
       <tr *ngFor="let payment of paymentService.payments">
@@ -111,7 +95,6 @@
         <td>{{ payment.amountOfService }}</td>
         <td>{{ payment.date }}</td>
         <td>{{ payment.dayAmountUf }}</td>
-
         <td>
           <a (click)="editPayment(payment)" class="btn btn-secondary btn-sm">
             <i class="material-icons">edit</i>
@@ -120,10 +103,8 @@
             <i class="material-icons">delete</i>
           </a>
         </td>
-        
       </tr>
     </tbody>
   </table>
 </div>
-
 </div>

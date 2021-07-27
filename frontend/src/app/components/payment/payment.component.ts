@@ -60,22 +60,18 @@ export class PaymentComponent implements OnInit {
       if(creando==false && editando==false){
         creando=true;
       }
-      //console.log("Horas: "+hrs);
     }
     else{
       window.alert("ERROR- Verifica los datos ingresados");
     }
-    
-
   }
   // añade un nuevo payment en base a un Formulario o guarda los cambios relizados en un payment
   // ya existente
   addPayment(form?: NgForm) {
-    console.log("editando: "+editando+"  creando: "+creando+" total: "+total+" UF: "+valorUF+" "+form.value._id);
     if(total!=0 && valorUF!=0){
       if(this.validarForm(form)==true){
             if (form.value._id && editando==true) {
-                console.log("EDIT");
+               
                 editando=false;
                 this.paymentService.putPayment(form.value,valorUF,total).subscribe((res) => {
                 
@@ -87,9 +83,7 @@ export class PaymentComponent implements OnInit {
               window.alert("Payment editado con exito");
             } 
             if(creando==true){      
-                
                 this.paymentService.postPayment(form.value,valorUF,total,hrs).subscribe((res) => {
-                 
                   this.getPayments();
                   this.resetForm(form);
                 });
@@ -97,8 +91,6 @@ export class PaymentComponent implements OnInit {
                 total=0;
                 creando=false;
                 window.alert("Payment creado con exito");
-               
-              
             }
       }
     }
@@ -143,21 +135,7 @@ export class PaymentComponent implements OnInit {
           return false;
         }
         else{
-          //console.log("FORMULARIO correcto");
           return true;
         }
-  }
-  validarEjecucion(){
-    console.log(editando+" valor uf: "+valorUF+" total: "+total)
-    if(editando==true){
-      return false;
-    }
-    else{
-      return true;
-    }
-     
-
-
-
   }
 }
