@@ -24,7 +24,6 @@ se debe:
       resultado al formulario.
 
 1.3.- * En caso de querer reiniciar el formulario, hacer click en el boton clear "X"
-         
       * En caso de querer guardar el payment, hacer click en el boton save con "forma de disquete"
          * se desplegara un mensaje confirmando la operacion 
          
