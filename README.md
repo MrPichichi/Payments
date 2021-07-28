@@ -1,4 +1,6 @@
 # payments
+*nota: respecto al contador de servicios, considerar que algunas operaciones usan mas de uno.
+
 Tecnologias utilizadas mongodb, morgan, express, nodejs, angular 
 Para ejecutar correctamente CRUD  en este proyecto
 se debe:
@@ -22,9 +24,10 @@ se debe:
       resultado al formulario.
 
 1.3.- * En caso de querer reiniciar el formulario, hacer click en el boton clear "X"
+         
       * En caso de querer guardar el payment, hacer click en el boton save con "forma de disquete"
-         * Si la cantidad es menor al limite (10), se desplegara un mensaje confirmando la operacion (algunas operaciones usan mas de un servicio a la vez)
-         * Si la cantidad supera el limite, se desplegara un aviso para aceptar el reinicio de los payments
+         * se desplegara un mensaje confirmando la operacion 
+         
 
 ## Como ELIMINAR un payment ##
    2.- Dentro del listado desplegado, seleccionar el payment a eliminar haciendo click en el icono "delete"
