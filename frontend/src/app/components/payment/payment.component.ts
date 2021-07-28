@@ -126,8 +126,6 @@ export class PaymentComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form && editando == false){
       form.reset();
-      window.alert("Formulario reseteado");
-
     }
   }
   //validacion de la estructura de un formulario
